@@ -1,9 +1,6 @@
 #!/bin/sh
 set -ex
 
-GIT_COMMIT=${GIT_COMMIT:-"Test Value"}
-
-
 function generate_payload {
         cat <<eof > index.html
 <!DOCTYPE html>
@@ -21,7 +18,7 @@ function generate_payload {
 <body>
 <h1>My Payload</h1>
 <p>My environment is DEV1</p>
-<p>The git hash is $GIT_COMMIT</p>
+<p>The git hash is $1</p>
 <p>For online documentation and support please refer to
 <br/>
 The Readme for this repo is at 
@@ -34,7 +31,7 @@ eof
 }
 
 function main() {
-	generate_payload
+	generate_payload $1
 }
 
 main "$@"
