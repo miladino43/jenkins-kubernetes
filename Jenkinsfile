@@ -13,22 +13,17 @@ podTemplate(label: label, serviceAccount: 'jenkins-helm', containers: [
 	    stage('Create configmap') {
 	    	container('kubectl') {
 		      	sh """
-	            pwd
-	            ls
 	            echo "GIT_BRANCH=${gitBranch}" >> /etc/environment
 	            echo "GIT_COMMIT=${gitCommit}" >> /etc/environment
-	            env
 	            """
 	            sh "./create-payload.sh ${gitCommit}"
-	            sh "ls"
 	            sh "cat index.html"
-
+	            sh "kubectl create cm nginx-payload --from-file index.html"
         	}
 	    }
-		stage('Run kubectl') {
+		stage('Deploy api') {
 		    container('kubectl') {
-		    	sh 'ls'
-		        sh "kubectl get po"
+		        sh "kubectl create -f nginx.yaml"
 		    }
 	    }
 	}
