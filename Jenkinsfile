@@ -14,6 +14,7 @@ podTemplate(label: label, serviceAccount: 'jenkins-helm', containers: [
 	    	container('kubectl') {
 		      	sh """
 	            pwd
+	            ls
 	            echo "GIT_BRANCH=${gitBranch}" >> /etc/environment
 	            echo "GIT_COMMIT=${gitCommit}" >> /etc/environment
 	            """
