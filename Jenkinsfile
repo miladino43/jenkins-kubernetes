@@ -23,7 +23,7 @@ podTemplate(label: label, serviceAccount: 'jenkins-helm', containers: [
 	    }
 		stage('Deploy api') {
 		    container('kubectl') {
-		        sh "kubectl create -f nginx.yaml"
+		        sh "kubectl create -f nginx.yaml --validate=false"
 		    }
 	    }
 	}
