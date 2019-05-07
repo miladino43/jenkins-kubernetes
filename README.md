@@ -1,7 +1,7 @@
 # jenkins-kubernetes
 
 
-##pre-reqs
+## pre-reqs
 - kubernetes cluster (can use minikube)
 - helm install jenkins/stable on the cluster
 
