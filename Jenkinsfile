@@ -17,8 +17,9 @@ podTemplate(label: label, serviceAccount: 'jenkins-helm', containers: [
 	            ls
 	            echo "GIT_BRANCH=${gitBranch}" >> /etc/environment
 	            echo "GIT_COMMIT=${gitCommit}" >> /etc/environment
+	            env
 	            """
-	            sh "./create-payload.sh"
+	            sh "./create-payload.sh ${gitCommit}"
 	            sh "ls"
 	            sh "cat index.html"
 
