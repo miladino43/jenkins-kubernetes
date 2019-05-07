@@ -1,4 +1,5 @@
 #!/bin/bash
+set -ex
 
 GIT_COMMIT=${GIT_COMMIT:-"Test Value"}
 
